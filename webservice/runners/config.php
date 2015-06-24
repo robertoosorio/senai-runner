@@ -3,8 +3,8 @@
 	function getConn(){
 
 		$host = "localhost";
-		$user = "root";//runners_master
-		$pass = "root";//7MahD5=N@em
+		$user = "root";
+		$pass = "root";
 		$bd = "runners_runners";
 
 		$conn = new mysqli($host, $user, $pass, $bd);
