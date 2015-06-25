@@ -5,6 +5,7 @@ require_once('config.php');
  
 \Slim\Slim::registerAutoloader();
 $app = new \Slim\Slim();
+$app->response()->header('Content-Type', 'application/json;charset=utf-8');
 
 //BUSCAR CORRIDAS
 $app->get('/runs',function(){
@@ -45,6 +46,13 @@ $app->get('/runs/:id',function($id){
 
 //CADASTRAR CORRIDA
 $app->post('/runs',function(){
+	
+	if(empty($_POST)){//dados vindos no formato json
+		$request = \Slim\Slim::getInstance()->request();
+    	$d = json_decode($request->getBody());
+    	$_POST = (array) $d;
+    }
+
 	$conn = getConn();
 	$dados = cleanup($_POST,false);
 	$keys = implode(",",array_keys($dados));
@@ -169,15 +177,18 @@ $app->run();
 ####################################        FUNÇÕES DIVERSAS        #####################################
 #########################################################################################################
 function dateInverter($data){
-	$explode = "-";
-	$divisor = "/";
-	if(strpos($data, "/") !== false){
-		$explode = "/";
-		$divisor = "-";
-	}
+	if($data != ""){
+		$explode = "-";
+		$divisor = "/";
+		if(strpos($data, "/") !== false){
+			$explode = "/";
+			$divisor = "-";
+		}
 
-	$data = explode($explode,$data);
-	return $data[2].$divisor.$data[1].$divisor.$data[0];
+		$data = explode($explode,$data);
+		$data = $data[2].$divisor.$data[1].$divisor.$data[0];
+	}
+	return $data;	
 }
 
 function cleanup($data, $write=false) {
