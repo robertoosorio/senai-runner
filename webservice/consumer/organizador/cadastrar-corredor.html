@@ -25,18 +25,18 @@
 			<span class="label">
 				<a href="javascript:history.go(-1);" class="btn_voltar">Voltar</a>
 				<h1 class="text">
-					Runs & Runners - Corridas
+					Runs & Runners - Corredores
 				</h1>
 			</span>
 		</div>
 
-		<form action="" method="post" class="form" onsubmit="return cadastrarCorrida();">
+		<form action="" method="post" class="form" onsubmit="return cadastrarCorredor();">
 			
 			<input type="hidden" name="cadastro" value="1"/>
 			
-			<input type="text" name="nome" id="nome" placeholder="Nome da corrida">
-			<input type="text" name="data" id="data" placeholder="Data da corrida">
-			<input type="text" name="cidade" id="cidade" placeholder="Cidade da corrida">
+			<input type="text" name="nome" id="nome" placeholder="Nome">
+			<input type="text" name="data_nascimento" id="data_nascimento" placeholder="Data de nascimento">
+			<input type="text" name="cidade" id="cidade" placeholder="Cidade">
 			<select name="estado" id="estado">
 				<option value="AC">AC</option>
 				<option value="AL">AL</option>
@@ -67,13 +67,9 @@
 				<option value="TO">TO</option>
 			</select>
 			
-			<textarea name="descricao" id="descricao" placeholder="Descricao da corrida"></textarea>
-
-			<input type="text" name="valor_inscricao" id="valor_inscricao" placeholder="Valor da inscrição">
-
 			<select name="status" id="status">
-				<option value="agendada">Agendada</option>
-				<option value="cancelada">Cancelada</option>
+				<option value="ativo">Ativo</option>
+				<option value="inativo">Inativo</option>
 			</select>
 
 			<input type="submit" value="Enviar" class="cor2">
@@ -98,15 +94,15 @@
 
 <script type="text/javascript">
 	
-	$('#data').mask("00/00/0000");
+	$('#data_nascimento').mask("00/00/0000");
 
-	function cadastrarCorrida(){
+	function cadastrarCorredor(){
 
 		console.log('adicionandoCorrida');
 		$.ajax({
 			type: 'POST',
 			contentType: 'application/json',
-			url: '/webservice/runners/runs',
+			url: '/webservice/runners/runners',
 			dataType: "json",
 			data: formToJSON(),
 			success: function(data, textStatus, jqXHR){
@@ -132,12 +128,9 @@
 	function formToJSON() {
 		var retorno = JSON.stringify({
 			"nome": $('#nome').val(),
-			"data": $('#data').val(),
+			"data_nascimento": $('#data_nascimento').val(),
 			"cidade": $('#cidade').val(),
-			"estado": $('#estado').val(),
-			"descricao": $('#descricao').val(),
-			"valor_inscricao": $('#valor_inscricao').val(),
-			"status": $('#status').val()
+			"estado": $('#estado').val()
 		});
 		return retorno;
 	}
