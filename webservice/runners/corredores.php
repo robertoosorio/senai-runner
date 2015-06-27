@@ -3,7 +3,7 @@
 //BUSCAR CORREDORES
 $app->get('/runners',function(){
 	$conn = getConn();
-	$r = $conn->query("SELECT * FROM corredor");
+	$r = $conn->query("SELECT * FROM corredor ORDER BY nome");
 	$corredor = array();
 	while($return = $r->fetch_assoc()) {
 		$tratado = array();
@@ -25,7 +25,7 @@ $app->get('/runners',function(){
 //BUSCAR CORREDORES
 $app->get('/runners/actives',function(){
 	$conn = getConn();
-	$r = $conn->query("SELECT * FROM corredor WHERE status='ativo'");
+	$r = $conn->query("SELECT * FROM corredor WHERE status='ativo' ORDER BY nome");
 	$corredor = array();
 	while($return = $r->fetch_assoc()) {
 		$tratado = array();
@@ -99,6 +99,11 @@ $app->post('/runners',function(){
 //ATUALIZAR CORREDOR
 $app->put('/runners/:id',function($id){
 	if(is_numeric($id)){
+		if(empty($_POST)){//dados vindos no formato json
+			$request = \Slim\Slim::getInstance()->request();
+	    	$d = json_decode($request->getBody());
+	    	$_POST = (array) $d;
+	    }
 		$conn = getConn();
 		if(isset($_POST['_METHOD'])) unset($_POST['_METHOD']);
 		$dados = cleanup($_POST,false);

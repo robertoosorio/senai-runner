@@ -74,6 +74,11 @@ $app->post('/runsEntry',function(){
 //ATUALIZAR INSCRIÇÃO
 $app->put('/runsEntry/:id',function($id){
 	if(is_numeric($id)){
+		if(empty($_POST)){//dados vindos no formato json
+			$request = \Slim\Slim::getInstance()->request();
+	    	$d = json_decode($request->getBody());
+	    	$_POST = (array) $d;
+	    }
 		$conn = getConn();
 		if(isset($_POST['_METHOD'])) unset($_POST['_METHOD']);
 		$dados = cleanup($_POST,false);
