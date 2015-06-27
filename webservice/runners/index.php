@@ -12,6 +12,10 @@ include ('corredores.php');
 include ('inscricoes.php');
 include ('funcoes.php');
 
+$app->get('/', function(){
+    $app->redirect('documentacao.html');
+});
+
 $app->run();
 
 ?>
