@@ -21,7 +21,6 @@
         .borderRightNone                            { border-right: none; }
         .borderBottomNone                           { border-bottom: none; }
 
-        .width200                                   { width: 200px; }
         .width250                                   { width: 250px; }
 
 
@@ -44,7 +43,7 @@
 
         <br>
         <h2>Requisitos da plataforma</h2>
-        <p>Os requisitos da plataforma são descritos na a seguir:</p>
+        <p>Os requisitos da plataforma são descritos a seguir:</p>
         <ol>
             <li>
                 O organizador poderá cadastrar, incluir, atualizar e excluir corridas através de uma plataforma WEB
@@ -81,28 +80,28 @@
             <td width="59%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tbody><tr>
                 <td rowspan="4">GET</td>
-                <td class="width200">/webservice/runners</td>
+                <td class="width250">/webservice/runners</td>
                 <td class="width250">Busca Corredores</td>
                 <td>&nbsp;</td>
                 </tr>
               <tr>
-                <td class="width200">/webservice/runners/actives</td>
+                <td class="width250">/webservice/runners/actives</td>
                 <td class="width250">Busca Corredores Ativos</td>
                 <td>&nbsp;</td>
                 </tr>
               <tr>
-                <td class="width200">/webservice/runners/:id</td>
+                <td class="width250">/webservice/runners/:id</td>
                 <td class="width250">Busca um corredor pelo ID</td>
                 <td>&nbsp;</td>
                 </tr>
               <tr>
-                <td class="width200">/webservice/runners/:id/runsEntry</td>
+                <td class="width250">/webservice/runners/:id/runsEntry</td>
                 <td class="width250">Busca inscrições deste corredor</td>
                 <td>&nbsp;</td>
                 </tr>
               <tr>
                 <td>POST</td>
-                <td class="width200">/webservice/runners</td>
+                <td class="width250">/webservice/runners</td>
                 <td class="width250">Cadastra corredor</td>
                 <td><p>Dados enviados via formulário html ou json.</p>
                   <p>Campos possíveis:<br>
@@ -115,7 +114,7 @@
                 </tr>
               <tr>
                 <td>PUT</td>
-                <td class="width200">/webservice/runners/:id</td>
+                <td class="width250">/webservice/runners/:id</td>
                 <td class="width250">Atualiza corredor com o ID</td>
                 <td><p>Dados enviados via formulario html** ou json.</p>
                   <p>Mesmos campos citados acima. Apenas atualiza campos enviados, deixando os demais inalterados.</p></td>
@@ -133,28 +132,28 @@
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tbody><tr>
                 <td rowspan="4">GET</td>
-                <td class="width200">/webservice/runs</td>
+                <td class="width250">/webservice/runs</td>
                 <td class="width250">Busca Corridas</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td class="width200">/webservice/runs/open</td>
+                <td class="width250">/webservice/runs/open</td>
                 <td class="width250">Busca Corridas Agendadas</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td class="width200">/webservice/runs/:id</td>
+                <td class="width250">/webservice/runs/:id</td>
                 <td class="width250">Busca uma corrida pelo ID</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td class="width200">/webservice/runs/:id/runsEntry</td>
+                <td class="width250">/webservice/runs/:id/runsEntry</td>
                 <td class="width250">Busca inscrições desta corrida</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
                 <td>POST</td>
-                <td class="width200">/webservice/runs</td>
+                <td class="width250">/webservice/runs</td>
                 <td class="width250">Cadastra corrida</td>
                 <td><p>Dados enviados via formulário html ou json.</p>
                   <p>Campos possíveis:<br>
@@ -168,7 +167,7 @@
               </tr>
               <tr>
                 <td>PUT</td>
-                <td class="width200">/webservice/runs/:id</td>
+                <td class="width250">/webservice/runs/:id</td>
                 <td class="width250">Atualiza corrida com o ID</td>
                 <td><p>Dados enviados via formulario html** ou json.</p>
                   <p>Mesmos campos citados acima. Apenas atualiza campos enviados, deixando os demais inalterados.</p></td>
@@ -186,23 +185,23 @@
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tbody><tr>
                 <td rowspan="3">GET</td>
-                <td class="width200">/webservice/runsEntry<br></td>
+                <td class="width250">/webservice/runsEntry<br></td>
                 <td class="width250">Busca Inscrições</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td class="width200">/webservice/runsEntry/:id</td>
+                <td class="width250">/webservice/runsEntry/:id</td>
                 <td class="width250">Busca uma inscrição pelo ID</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td class="width200">/webservice/runners/:runnerId/runs/:runId</td>
+                <td class="width250">/webservice/runners/:runnerId/runs/:runId</td>
                 <td class="width250">Busca inscrições pelo ID da corrida e do corredor</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
                 <td rowspan="2">POST</td>
-                <td class="width200">/webservice/runsEntry</td>
+                <td class="width250">/webservice/runsEntry</td>
                 <td class="width250">Cadastra inscrição</td>
                 <td><p>Dados enviados via formulário html ou json.</p>
                   <p>Campos possíveis:<br>
@@ -212,30 +211,30 @@
                   data - timestamp (gerada automaticamente)</p></td>
               </tr>
               <tr>
-                <td class="width200">/webservice/runners/:runnerId/runs/:runId</td>
+                <td class="width250">/webservice/runners/:runnerId/runs/:runId</td>
                 <td class="width250">Cadastra inscrição</td>
                 <td>Cadastro direto, passando o ID da corrida e do corredor</td>
               </tr>
               <tr>
                 <td rowspan="2">PUT</td>
-                <td class="width200">/webservice/runsEntry/:id</td>
+                <td class="width250">/webservice/runsEntry/:id</td>
                 <td class="width250">Atualiza corrida com o ID</td>
                 <td><p>Dados enviados via formulario html** ou json.</p>
                   <p>Mesmos campos citados acima. Apenas atualiza campos enviados, deixando os demais inalterados.</p></td>
               </tr>
               <tr>
-                <td class="width200">/webservice/runners/:runnerId/runs/:runId</td>
+                <td class="width250">/webservice/runners/:runnerId/runs/:runId</td>
                 <td class="width250">Atualiza inscrição</td>
                 <td>Atualiza direto, passando o ID da corrida e do corredor</td>
               </tr>
               <tr>
                 <td class="borderBottomNone" rowspan="2">DELETE</td>
-                <td class="width200">/webservice/runsEntry/:id</td>
+                <td class="width250">/webservice/runsEntry/:id</td>
                 <td class="width250">Apaga corrida com o ID</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td class="borderBottomNone width200">/webservice/runners/:runnerId/runs/:runId</td>
+                <td class="borderBottomNone width250">/webservice/runners/:runnerId/runs/:runId</td>
                 <td class="borderBottomNone width250">Apaga corrida pelo ID da corrida e do corredor</td>
                 <td class="borderBottomNone">&nbsp;</td>
               </tr>
