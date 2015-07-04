@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br">
+
+<head>
+
+	<meta charset="UTF-8" />
+	<title>Runs & Runners - Grupo 3</title>
+	
+	<meta name="robots" content="noindex, nofollow" />
+	<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+	
+	<!--[if lt IE 9]>
+		<script src="js/html5.js" type="text/javascript"></script>
+	<![endif]-->
+	
+</head>
+
+<body>
+
+	<section class="container">
+		
+		<div class="tituloInternas">
+			<span class="label">
+				<a href="inscrever-em-corrida.html" class="btn_voltar" id="voltarCorredor">Voltar</a>
+				<h1 class="text">
+					Runs & Runners - Corridas que você está inscrito
+				</h1>
+			</span>
+		</div>
+
+		<div id="listagem_corridas"></div>
+
+		<div class="cor5 copy copy_int">
+			<span class="label">
+				<span class="text">Copyright &copy; 2015</span>
+			</span>
+		</div>
+
+	</section>
+	<!-- .container -->
+	
+</body>
+
+</html>
+
+<script type="text/javascript">
+	
+	function inverterDate(dataIn){
+		if(dataIn){
+			var temp = dataIn.split("-");
+			return temp[2]+"/"+temp[1]+"/"+temp[0];
+		}
+		return dataIn;
+	}
+	
+	var idCorredor = window.location.href.split("?")[1]; 
+	//$('#voltarCorredor').attr("href", "cadastrar-corredor.html?"+idCorredor);
+	
+	function buscarCorridas(){
+		var corridas = '';
+
+		$('#listagem_corridas').html('<img src="../img/preloader.gif" class="preloader" />');
+		$.ajax({
+			type: 'GET',
+			url: "http://www.ceolato.com.br/wsg4server/corredores/"+idCorredor+"/corridas",
+			dataType: "json", // data type of response
+			success: function(data){
+				
+				var count= Object.keys(data.corridas).length;
+				var arr = data.corridas;
+				var temp = '<ul class="listagem_corridas">';
+				if(count==0){
+				temp += '<li><h2><span>"NÃO EXISTEM CORRIDAS NAS QUAIS VOCÊ ENCONTRA-SE INSCRITO"</h2></li>';
+				
+				}else{
+				for (var i = 0; i < count; i++) {
+					temp += '<li><h2><span>'+inverterDate(data.corridas[i].data)+'</span> '+data.corridas[i].nome+'</h2></li>';
+				}
+	
+				};
+				
+				temp += '</ul>'+
+				$('#listagem_corridas').html(temp);
+				
+
+			}
+		});
+	}
+
+	buscarCorridas();
+
+</script>
